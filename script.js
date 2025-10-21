@@ -60,8 +60,8 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// 카드와 서비스 아이템에 애니메이션 적용
-document.querySelectorAll('.about-card, .service-item').forEach(el => {
+// 카드, 프로젝트, 스킬 아이템에 애니메이션 적용
+document.querySelectorAll('.about-card, .project-item, .skill-category').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -71,9 +71,9 @@ document.querySelectorAll('.about-card, .service-item').forEach(el => {
 // CTA 버튼 클릭 이벤트
 const ctaButton = document.querySelector('.cta-button');
 ctaButton.addEventListener('click', () => {
-    const contactSection = document.querySelector('#contact');
+    const projectsSection = document.querySelector('#projects');
     const headerOffset = 80;
-    const elementPosition = contactSection.offsetTop;
+    const elementPosition = projectsSection.offsetTop;
     const offsetPosition = elementPosition - headerOffset;
 
     window.scrollTo({

@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -40,7 +41,10 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #6366f1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
@@ -139,8 +143,20 @@ header {
 .about h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: #333;
+}
+
+.about-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.about-intro p {
+    margin-bottom: 1rem;
 }
 
 .about-content {
@@ -173,52 +189,214 @@ header {
     color: #6366f1;
 }
 
-/* 서비스 섹션 */
-.services {
+/* 프로젝트 섹션 */
+.projects {
     padding: 5rem 0;
 }
 
-.services h2 {
+.projects h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 3rem;
     color: #333;
 }
 
-.services-grid {
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-color: #667eea;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.project-header h3 {
+    font-size: 1.4rem;
+    color: #333;
+    flex: 1;
+    margin-right: 1rem;
+}
+
+.project-tag {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.project-desc {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.project-details {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.project-details li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.project-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.project-metrics {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-metrics span {
+    background: #f0f4ff;
+    color: #667eea;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* 스킬 섹션 */
+.skills {
+    padding: 5rem 0;
+    background: #f8f9fa;
+}
+
+.skills h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+}
+
+.skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
-.service-item {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+.skill-category {
+    background: white;
     padding: 2rem;
-    border-radius: 10px;
-    transition: transform 0.3s;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.service-item:hover {
-    transform: scale(1.05);
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
-.service-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+.skill-category h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #667eea;
+    text-align: center;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category li {
+    padding: 0.5rem 0;
+    color: #555;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skill-category li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
 }
 
 /* 연락 섹션 */
 .contact {
     padding: 5rem 0;
-    background: #f8f9fa;
 }
 
 .contact h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     color: #333;
+}
+
+.contact-intro {
+    text-align: center;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-method {
+    text-align: center;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-method h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.contact-method p {
+    color: #667eea;
+    font-weight: 500;
 }
 
 .contact-form {
@@ -254,11 +432,12 @@ header {
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .contact-form button:hover {
     transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 }
 
 /* 푸터 */
@@ -318,9 +497,22 @@ footer {
     }
 
     .about h2,
-    .services h2,
+    .projects h2,
+    .skills h2,
     .contact h2 {
         font-size: 2rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -336,5 +528,18 @@ footer {
     .cta-button {
         padding: 0.8rem 2rem;
         font-size: 1rem;
+    }
+
+    .about-intro {
+        font-size: 1rem;
+    }
+
+    .project-header {
+        flex-direction: column;
+    }
+
+    .project-tag {
+        align-self: flex-start;
+        margin-top: 0.5rem;
     }
 }
