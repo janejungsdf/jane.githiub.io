@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - 간단한 웹사이트</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">MyWebsite</div>
+            <ul class="nav-menu">
+                <li><a href="#home">홈</a></li>
+                <li><a href="#about">소개</a></li>
+                <li><a href="#services">서비스</a></li>
+                <li><a href="#contact">연락</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 섹션 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">환영합니다!</h1>
+            <p class="fade-in">현대적이고 반응형인 웹사이트입니다</p>
+            <button class="cta-button fade-in">시작하기</button>
+        </div>
+    </section>
+
+    <!-- 소개 섹션 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>우리에 대해</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <div class="icon">🚀</div>
+                    <h3>빠른 속도</h3>
+                    <p>최적화된 성능으로 빠른 로딩 속도를 제공합니다</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">💡</div>
+                    <h3>혁신적</h3>
+                    <p>최신 기술과 트렌드를 반영한 솔루션입니다</p>
+                </div>
+                <div class="about-card">
+                    <div class="icon">🎨</div>
+                    <h3>아름다운 디자인</h3>
+                    <p>사용자 친화적이고 세련된 인터페이스입니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 섹션 -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>서비스</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>웹 개발</h3>
+                    <p>HTML, CSS, JavaScript를 활용한 현대적인 웹 개발</p>
+                </div>
+                <div class="service-item">
+                    <h3>반응형 디자인</h3>
+                    <p>모든 기기에서 완벽하게 작동하는 반응형 웹사이트</p>
+                </div>
+                <div class="service-item">
+                    <h3>UI/UX</h3>
+                    <p>사용자 경험을 최우선으로 하는 인터페이스 설계</p>
+                </div>
+                <div class="service-item">
+                    <h3>성능 최적화</h3>
+                    <p>빠르고 효율적인 웹사이트 성능 최적화</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 연락 섹션 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>연락하기</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="이름" required>
+                <input type="email" placeholder="이메일" required>
+                <textarea placeholder="메시지" rows="5" required></textarea>
+                <button type="submit">보내기</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
