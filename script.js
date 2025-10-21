@@ -61,7 +61,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // 카드와 서비스 아이템에 애니메이션 적용
-document.querySelectorAll('.about-card, .service-item').forEach(el => {
+document.querySelectorAll('.about-card, .service-item, .portfolio-item, .testimonial-card, .faq-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -105,4 +105,116 @@ window.addEventListener('load', () => {
     const heroContent = document.querySelector('.hero-content');
     heroContent.style.opacity = '1';
     heroContent.style.transform = 'translateY(0)';
+});
+
+// 다크 모드 토글
+const themeToggle = document.querySelector('.theme-toggle');
+const body = document.body;
+
+// 로컬 스토리지에서 테마 설정 불러오기
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+    body.classList.add('dark-mode');
+    themeToggle.textContent = '☀️';
+}
+
+themeToggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+    } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// 스크롤 투 탑 버튼
+const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// FAQ 아코디언
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+
+    question.addEventListener('click', () => {
+        // 현재 아이템이 활성화되어 있는지 확인
+        const isActive = item.classList.contains('active');
+
+        // 모든 FAQ 아이템 닫기
+        faqItems.forEach(faq => faq.classList.remove('active'));
+
+        // 클릭한 아이템이 비활성화 상태였다면 활성화
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// 통계 카운터 애니메이션
+const statNumbers = document.querySelectorAll('.stat-number');
+let hasAnimated = false;
+
+const animateCounter = (element) => {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000; // 2초
+    const step = target / (duration / 16); // 60fps 기준
+    let current = 0;
+
+    const updateCounter = () => {
+        current += step;
+        if (current < target) {
+            element.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+
+    updateCounter();
+};
+
+// Intersection Observer로 통계 섹션이 보일 때 애니메이션 실행
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            statNumbers.forEach(stat => {
+                animateCounter(stat);
+            });
+        }
+    });
+}, { threshold: 0.5 });
+
+const statsSection = document.querySelector('.stats');
+if (statsSection) {
+    statsObserver.observe(statsSection);
+}
+
+// 포트폴리오 아이템 클릭 이벤트
+const portfolioBtns = document.querySelectorAll('.portfolio-btn');
+portfolioBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const portfolioItem = btn.closest('.portfolio-item');
+        const title = portfolioItem.querySelector('h3').textContent;
+        alert(`${title}에 대한 상세 정보를 확인하시겠습니까?\n\n실제 프로젝트에서는 모달이나 새 페이지로 이동합니다.`);
+    });
 });
